@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>محاسبه شاخص BMI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .guide {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="background-color: aqua">
+    <div class="container">
+        <h1>BMIمحاسبه شاخص</h1>
+        <div class="input-group">
+          <label for="weight">وزن (کیلوگرم)</label>
+            <input type="number" id="weight" placeholder="مثال: 70">
+        </div>
+        <div class="input-group">
+            <label for="height">قد (متر)</label>
+            <input type="number" id="height" placeholder="مثال: 1.75">
+        </div>
+        <button class="calculate-btn" onclick="calculateBMI()">محاسبه</button>
+        <div id="result" class="result"></div>
+        <div class="guide">
+          <ul>
+              <li>بین 18.5 تا 25: وزن نرمال</li>
+                <li>کمتر از 18.5: کمبود وزن</li>
+                <li>بین 25 تا 30: اضافه وزن</li>
+                <li>بین 30 تا 35: چاقی درجه 1</li>
+                <li>بین 35 تا 40: چاقی درجه 2</li>
+                <li>بیشتر از 40: چاقی درجه 3 (چاقی مفرط یا بسیار شدید)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            var weightInput = document.getElementById("weight");
+            var heightInput = document.getElementById("height");
+            var resultDiv = document.getElementById("result");
+
+            var weight = parseFloat(weightInput.value);
+            var height = parseFloat(heightInput.value);
+
+            if (!isNaN(weight) && !isNaN(height) && weight > 0 && height > 0) {
+                var bmi = weight / (height * height);
+                resultDiv.innerHTML = "BMI شما: " + bmi.toFixed(2);
+            } else {
+                resultDiv.innerHTML = "لطفاً وزن و قد صحیح خود را وارد کنید.";
+            }
+        }
+    </script>
+</body>
+</html>
